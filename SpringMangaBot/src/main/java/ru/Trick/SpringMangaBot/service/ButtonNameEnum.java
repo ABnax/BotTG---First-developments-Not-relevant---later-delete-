@@ -5,7 +5,11 @@ public enum ButtonNameEnum {
     GET_CATALOG("Каталог"),
     GET_SUBSCRIPTION("Подписка"),
     GET_BOOKMARK("Закладки"),
-    HELP_BUTTON("Помощь");
+    HELP_BUTTON("Помощь"),
+
+    BACK_FOR_START_MENU ("Главное меню"),
+    BUY_MONEY ("Пополнить баланс"),
+    BUY_SUB("Купить подписку");
 
     private final String buttonName;
 

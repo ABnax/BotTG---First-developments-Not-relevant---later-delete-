@@ -1,16 +1,26 @@
 package ru.Trick.SpringMangaBot.Model;
 
 public class User {
-    private int id;
+    private long id;
     private String name;
     private int balance;
     private boolean status;
 
-    public int getId() {
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", balance=" + balance +
+                ", status=" + status +
+                '}';
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
