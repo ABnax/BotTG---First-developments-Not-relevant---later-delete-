@@ -232,7 +232,7 @@ public class TG_bot extends TelegramLongPollingBot {
                         sendMessage(chatId, "Пока не работает....");
                     break;
                 case "Купить подписку":
-                    sendMessage(chatId, "Пока не работает....");
+                    buy_sub(chatId);
                     break;
 
                 case "Помощь":
@@ -297,6 +297,21 @@ public class TG_bot extends TelegramLongPollingBot {
 
     }
 
+    private void buy_sub (long chatId) {
+        User userTemp = takeUser(chatId);
+        if(!userTemp.isStatus() && userTemp.getBalance()>=150) {
+            userTemp.setBalance(userTemp.getBalance()-150);
+            if(userTemp.getBalance()<0) {
+                throw new ArithmeticException("Баланс ушел в минус! Что бл***!");
+            }
+         userTemp.setStatus(true);
+            int balanceTemp = userTemp.getBalance();
+            boolean status = userTemp.isStatus();
+            jdbcTemplate.update("UPDATE Telegramdb SET  balance=?, status=? WHERE id=?", userTemp.getBalance(),userTemp.isStatus(), chatId );
+            sendMessage(chatId, "Подписка куплена! \nСпасибо за покупку.\n"+ "Ваш баланс: "+userTemp.getBalance());
+        } else if (userTemp.isStatus()) { sendMessage(chatId, "Извините, у Вас уже есть подписка.");}
+          else if (userTemp.getBalance()<150) {sendMessage(chatId, "Недостаточно средств на балансе.");}
+    }
 
     private void subScription(long chatId) {
         User userTemp = takeUser(chatId);
@@ -304,6 +319,11 @@ public class TG_bot extends TelegramLongPollingBot {
         if (userTemp.isStatus()) {
             statusSub = "активна";
             String answer = "Статус Вашей подписки: " + statusSub + '\n' + "Подписка активна до: " + "**/**/20**";
+            try {
+                sendApiMethod(sendMessageMenuSub(chatId, answer));
+            } catch (TelegramApiException e) {
+                System.out.println("send APi Method " + e.getMessage());
+            }
         } else {
             String answer = "Статус Вашей подписки: " + '\n' + statusSub;
 
