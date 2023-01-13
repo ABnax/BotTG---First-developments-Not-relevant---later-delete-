@@ -1,20 +1,10 @@
-package ru.Trick.SpringMangaBot.Model;
+package ru.trick.springMangaBot.model;
 
 public class User {
     private long id;
     private String name;
     private int balance;
-    private boolean status;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", balance=" + balance +
-                ", status=" + status +
-                '}';
-    }
+    private boolean subscription;
 
     public long getId() {
         return id;
@@ -40,12 +30,12 @@ public class User {
         this.balance = balance;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isSubscription() {
+        return subscription;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setSubscription(boolean subscription) {
+        this.subscription = subscription;
 
     }
 

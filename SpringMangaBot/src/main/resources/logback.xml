@@ -20,7 +20,7 @@
     </encoder>
   </appender>
 
-  <logger name="ru.Trick.SpringMangaBot" level="debug" additivity="false">
+  <logger name="ru.trick.springMangaBot" level="debug" additivity="false">
     <appender-ref ref="FILE-ROLLING"/>
   </logger>
 

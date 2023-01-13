@@ -1,4 +1,4 @@
-package ru.Trick.SpringMangaBot.config;
+package ru.trick.springMangaBot.config;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import ru.Trick.SpringMangaBot.service.TG_bot;
+import ru.trick.springMangaBot.service.TG_bot;
 
 @Slf4j
 @Component
@@ -25,7 +25,7 @@ public class BotInitializ {
         try {
             telegramBotsApi.registerBot(bot);
         } catch (TelegramApiException e) {
-           log.error("error occurred: " + e.getMessage());
+            log.error("error occurred: " + e.getMessage());
         }
     }
 }

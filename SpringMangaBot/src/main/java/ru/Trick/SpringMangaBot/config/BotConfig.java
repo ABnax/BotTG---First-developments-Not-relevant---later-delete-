@@ -1,4 +1,4 @@
-package ru.Trick.SpringMangaBot.config;
+package ru.trick.springMangaBot.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,3 +46,4 @@ public class BotConfig {
     public JdbcTemplate jdbcTemplate(){return new JdbcTemplate(dataSource());}
 
 }
+
